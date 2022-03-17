@@ -3,7 +3,6 @@ const StatusController = require('../controllers/status');
 
 const StatusRouter = {
   async status(ctx) {
-
     ctx.cacheControl(60 * 1000); // 1 minute
 
     ctx.body = await StatusController.get();
