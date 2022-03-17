@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:16.14.0
+      - image: circleci/redis:4.0.9
     steps:
       - checkout
       - run:
