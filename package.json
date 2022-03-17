@@ -28,7 +28,7 @@
     "wait:api": "test/scripts/waitUp.sh service-api 3000"
   },
   "engines": {
-    "node": "12.x",
+    "node": "16.x",
     "npm": "8.x"
   },
   "nyc": {
