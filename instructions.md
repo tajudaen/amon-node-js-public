@@ -10,6 +10,7 @@ The main keys of the test are:
 ## Repository App Test
 
 Clone the repository [Amon NodeJS Test](https://github.com/amontech/amon-node-js-public)
+create a new pull request with your changes from test to development branch
 
 ## Goal
 
