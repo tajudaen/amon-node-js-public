@@ -39,7 +39,7 @@ describe('Router: status', () => {
   });
 
   it('Should get status with user email', async () => {
-    const stubCtrl = sandbox.stub(StatusController, 'get').resolves('status');
+    sandbox.stub(StatusController, 'get').resolves('status');
     const ctx = {
       cacheControl: sandbox.stub(),
       state: {},
@@ -50,5 +50,4 @@ describe('Router: status', () => {
     expect(ctx.cacheControl.calledOnce).to.be.true;
     expect(ctx.cacheControl.calledWith(60 * 1000)).to.be.true;
   });
-
 });
