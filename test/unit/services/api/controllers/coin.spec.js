@@ -31,4 +31,26 @@ describe('Controller: Coin', () => {
       expect(CoinController.getCoinByCode(coinCode)).to.be.rejectedWith(Error, 'unknown_coin_code');
     });
   });
+
+  describe('createCoin', () => {
+    it('should to create coin', async () => {
+      const coinCode = 'DEV';
+
+      const coin = await CoinController.createCoin({ code: coinCode, name: 'devrum' });
+
+      expect(coin.code).to.eq(coinCode);
+      expect(Object.keys(coin).length).to.eq(3);
+    });
+
+    it('should fail to create coin if coin code exist', async () => {
+      const coinCode = 'DEV';
+
+      const coin = await CoinController.createCoin({ code: coinCode, name: 'devrum' });
+
+      expect(coin.code).to.eq(coinCode);
+      expect(Object.keys(coin).length).to.eq(3);
+
+      expect(CoinController.createCoin({ code: coinCode, name: 'new' })).to.be.rejectedWith(Error, 'coin_code_exists');
+    });
+  });
 });
