@@ -92,6 +92,16 @@ const ERRORS = [
     status: 413,
     description: 'The files you are trying to upload are too big.',
   },
+  {
+    code: 'coin_code_exists',
+    status: 400,
+    description: 'code code already exists',
+  },
+  {
+    code: 'error_fetching_coin_price',
+    status: 400,
+    description: 'an error occurred while getting coin price',
+  },
 
   // Internal
   {
