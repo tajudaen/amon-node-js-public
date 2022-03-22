@@ -23,6 +23,7 @@ describe('Controller: Coin', () => {
       const coin = await CoinController.getCoinByCode(coinCode);
 
       expect(coin.code).to.eq(coinCode);
+      expect(coin.price).to.be.true;
       expect(Object.keys(coin).length).to.eq(3);
     });
 
