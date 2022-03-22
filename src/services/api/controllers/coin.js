@@ -1,13 +1,20 @@
 const errors = require('../../../helpers/errors');
 const Models = require('../../../models/pg');
+const { getCoinPrice } = require('../utils/coingecko');
+const ONE_HOUR = 60 * 60 * 1000;
 
 const CoinController = {
   async getCoinByCode(coinCode) {
-    const coin = await Models.Coin.findByCoinCode(coinCode);
+    let coin = await Models.Coin.findByCoinCode(coinCode);
 
     errors.assertExposable(coin, 'unknown_coin_code');
 
-    return coin.filterKeys();
+    if (!coin.price || new Date() - new Date(coin.updateAt) > ONE_HOUR) {
+      const price = await getCoinPrice(coinCode.toLowerCase());
+      coin = await Models.Coin.updateCoinByCode(coinCode, { price: price.toString() });
+    }
+
+    return coin.filterKeys(['name', 'code', 'price']);
   },
 
   async createCoin(data) {

@@ -23,6 +23,7 @@ const getConfigObject = (sourceConfig) => ({
     LOGZIO_KEY: configParser(sourceConfig, 'string', 'LOG_LOGZIO_KEY', null),
   },
   SERVICES: servicesConfig.getConfigObject(sourceConfig),
+  COIN_GECKO: configParser(sourceConfig, 'string', 'COIN_GECKO', null),
 });
 
 module.exports = {

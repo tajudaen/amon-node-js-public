@@ -97,6 +97,11 @@ const ERRORS = [
     status: 400,
     description: 'code code already exists',
   },
+  {
+    code: 'error_fetching_coin_price',
+    status: 400,
+    description: 'an error occurred while getting coin price',
+  },
 
   // Internal
   {
