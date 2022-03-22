@@ -5,8 +5,7 @@ const config = require('../../../../config/index');
 module.exports = {
   async getCoinPrice(coin) {
     try {
-      if (!['development', 'production'].includes(config.ENVIRONMENT))
-        return Math.floor(Math.random() * 100).toFixed(2);
+      if (!['development', 'production'].includes(config.NODE_ENV)) return Math.floor(Math.random() * 100).toFixed(2);
 
       const { data } = await axios.get(`${config.COIN_GECKO}/${coin}`);
 
